@@ -1,0 +1,28 @@
+commands:
+  generate_access_key:
+    description: Generate a new access key.
+    command: ["btfs", "accesskey", "generate"]
+
+  list_access_keys:
+    description: List all access keys.
+    command: ["btfs", "accesskey", "list"]
+
+  get_access_key:
+    description: Get details of a specific access key.
+    command: ["btfs", "accesskey", "get", "{key_id}"]
+
+  enable_access_key:
+    description: Enable a specific access key.
+    command: ["btfs", "accesskey", "enable", "{key_id}"]
+
+  disable_access_key:
+    description: Disable a specific access key.
+    command: ["btfs", "accesskey", "disable", "{key_id}"]
+
+  reset_access_key:
+    description: Reset the secret of a specific access key.
+    command: ["btfs", "accesskey", "reset", "{key_id}"]
+
+  delete_access_key:
+    description: Delete a specific access key.
+    command: ["btfs", "accesskey", "delete", "{key_id}"]

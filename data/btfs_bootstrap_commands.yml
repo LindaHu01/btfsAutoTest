@@ -1,0 +1,14 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_bootstrap_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add {key}"
+  btfs_bootstrap_add_default: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add default"
+  btfs_bootstrap_list: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap list"
+
+test_cases:
+  - name: "btfs_bootstrap_add"
+    command: "btfs bootstrap add {key}"
+    params:
+      key: "/ip4/172.31.15.101/tcp/24001/p2p/16Uiu2HAmF651i3XvQH2GtoSdEJuHy5YcCNwPVSV6LoaajBzy1HUu"
+

@@ -1,0 +1,17 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  btfs_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs add {key}"
+  btfs_add_r: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs add -r {key}"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+
+test_cases:
+  - name: "btfs add"
+    command: "btfs add"
+    params:
+      key: "a.txt"
+
+  - name: "btfs add -r"
+    command: "btfs add -r"
+    params:
+      key: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"

@@ -1,0 +1,29 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_block_stat: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs block stat {key}"
+  btfs_block_get: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs block get {key}"
+  btfs_block_put: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs block put < {key}"
+  btfs_block_rm:  "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs block rm < {key}"
+
+test_cases:
+  - name: "btfs_block_stat"
+    command: "btfs block stat {key}"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"
+
+  - name: "btfs_block_get"
+    command: "btfs block get {key}"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"
+
+  - name: "btfs_block_put"
+    command: "btfs block put < {key}"
+    params:
+      key: "a.txt"
+
+  - name: "btfs_block_rm"
+    command: "btfs block rm {key}"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"

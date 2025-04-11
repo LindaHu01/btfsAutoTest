@@ -1,0 +1,11 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_backup: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs backup {key}"
+
+test_cases:
+  - name: "btfs_backup"
+    command: "btfs backup {key}"
+    params:
+      key: "a.txt"

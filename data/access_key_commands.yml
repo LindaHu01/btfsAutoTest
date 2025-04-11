@@ -1,0 +1,37 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_accesskey_gen: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey generate"
+  btfs_accesskey_get: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey get {key}"
+  btfs_accesskey_list: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey list"
+  btfs_accesskey_disable: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey disable {key}"
+  btfs_accesskey_enable:  "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey enable {key}"
+  btfs_accesskey_reset: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey reset {key}"
+  btfs_accesskey_delete: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs accesskey delete {key}"
+
+test_cases:
+  - name: "btfs_accesskey_get"
+    command: "btfs accesskey get {key}"
+    params:
+      key: "567f7692-7728-4ecd-85de-a170b2a029b1"
+
+  - name: "btfs_accesskey_disable"
+    command: "btfs accesskey disable {key}"
+    params:
+      key: "567f7692-7728-4ecd-85de-a170b2a029b1"
+
+  - name: "btfs_accesskey_enable"
+    command: "btfs accesskey enable {key}"
+    params:
+      key: "567f7692-7728-4ecd-85de-a170b2a029b1"
+
+  - name: "btfs_accesskey_reset"
+    command: "btfs accesskey reset {key}"
+    params:
+      key: "567f7692-7728-4ecd-85de-a170b2a029b1"
+
+  - name: "btfs_accesskey_delete"
+    command: "btfs accesskey delete {key}"
+    params:
+      key: "43df8c7b-7cfe-490b-8f4f-9b9fcafe2ab9"
