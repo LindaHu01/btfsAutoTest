@@ -1,0 +1,21 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_cid_base32: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid base32 {key}"
+  btfs_cid_bases: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid bases"
+  btfs_cid_codecs: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid codecs"
+  btfs_cid_format: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid format {key}"
+  btfs_cid_hashes: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid hashes"
+
+
+test_cases:
+  - name: "btfs_cid_base32"
+    command: "btfs cid base32 {key}"
+    params:
+      key: "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31"
+
+  - name: "btfs_cid_format"
+    command: "btfs cid format {key}"
+    params:
+      key: "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31"

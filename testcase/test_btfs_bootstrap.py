@@ -69,6 +69,38 @@ def test_btfs_bootstrap_list(btfs_handler):
     # Assert the command output
     assert "/ip4" in stdout
 
+# def test_btfs_bootstrap_rm(btfs_handler):
+#     """
+#     Test the 'test_btfs_bootstrap_rm ' command.
+#     """
+#     # Read the command and parameters from YAML
+#     command_template = btfs_handler.commands['btfs']['btfs_bootstrap_rm']
+#     key = btfs_handler.commands['test_cases'][1]['params']['key']
+#     # Execute the command
+#     stdout, stderr = btfs_handler.execute_command(command_template, key=key)
+#     print("标准输出1:", stdout)
+#     print("错误输出2:", stderr)
+#     # 查看输出内容是否包含 key
+#     if "removed" not in stdout:
+#         print("输出不包含 'removed'，实际输出:", stdout)
+#     # Assert the command output
+#     assert "removed" in stdout
+
+# def test_btfs_bootstrap_rm_all(btfs_handler):
+#     """
+#     Test the 'test_btfs_bootstrap_rm_all ' command.
+#     """
+#     # Read the command and parameters from YAML
+#     command_template = btfs_handler.commands['btfs']['btfs_bootstrap_rm_all']
+#     # Execute the command
+#     stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+#     print("标准输出1:", stdout)
+#     print("错误输出2:", stderr)
+#     # 查看输出内容是否包含 key
+#     if "removed" not in stdout:
+#         print("输出不包含 'removed'，实际输出:", stdout)
+#     # Assert the command output
+#     assert "removed" in stdout
 
 
 

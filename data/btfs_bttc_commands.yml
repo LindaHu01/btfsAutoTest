@@ -1,0 +1,18 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_bttc_btt2wbtt: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bttc btt2wbtt {key}"
+  btfs_bttc_send_btt_to:  "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bttc send-btt-to {key0} {key1}"
+
+test_cases:
+  - name: "btfs_bttc_btt2wbtt"
+    command: "btfs bttc btt2wbtt {key}"
+    params:
+      key: "1"
+
+  - name: "btfs_bttc_btt2wbtt"
+    command: "btfs bttc btt2wbtt {key}"
+    params:
+      key0: "0x49e50574fa7428201c023D66EC556d1024304178"
+      key1: "1"

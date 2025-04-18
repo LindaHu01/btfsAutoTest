@@ -5,10 +5,18 @@ btfs:
   btfs_bootstrap_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add {key}"
   btfs_bootstrap_add_default: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add default"
   btfs_bootstrap_list: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap list"
+  btfs_bootstrap_rm: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap rm {key}"
+  btfs_bootstrap_rm_all: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap rm all"
 
 test_cases:
   - name: "btfs_bootstrap_add"
     command: "btfs bootstrap add {key}"
+    params:
+      key: "/ip4/172.31.15.101/tcp/24001/p2p/16Uiu2HAmF651i3XvQH2GtoSdEJuHy5YcCNwPVSV6LoaajBzy1HUu"
+
+
+  - name: "btfs_bootstrap_rm"
+    command: "btfs bootstrap rm {key}"
     params:
       key: "/ip4/172.31.15.101/tcp/24001/p2p/16Uiu2HAmF651i3XvQH2GtoSdEJuHy5YcCNwPVSV6LoaajBzy1HUu"
 
