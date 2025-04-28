@@ -1,0 +1,14 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+  btfs_get: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 &&  ./btfs get {key}"
+
+
+
+test_cases:
+  - name: "btfs_get"
+    command: "btfs get"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"
+
