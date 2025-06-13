@@ -1,0 +1,25 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
+  btfs_pin_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 &&  ./btfs pin add {key}"
+  btfs_pin_rm: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 &&  ./btfs pin rm {key}"
+
+test_cases:
+  - name: "btfs_pin_add"
+    command: "btfs pin add"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"
+
+
+  - name: "btfs_pin_rm"
+    command: "btfs pin rm"
+    params:
+      key: "QmXu7eiQQaVrmy7bURVrcrpxuvm8TGGBG7QCv6ZY3y1Mde"
+
+
+
+
+
+
+
