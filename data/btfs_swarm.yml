@@ -1,0 +1,25 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
+  btfs_swarm_addrs: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs"
+  btfs_swarm_addrs_listen: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs listen"
+  btfs_swarm_addrs_local: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs local"
+
+
+
+test_cases:
+  - name: ""
+    command: ""
+    params:
+      key: ""
+
+
+
+
+
+
+
+
+
+

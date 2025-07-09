@@ -1,0 +1,25 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
+  directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+  btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
+  btfs_status_daily_last_report_time: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs statuscontract daily_last_report_time"
+  btfs_status_daily_report_online_server: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs statuscontract daily_report_online_server"
+  btfs_status_btfs_daily_total: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs statuscontract daily_total"
+  btfs_status_contract_lastinfo: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs statuscontract lastinfo"
+  btfs_status_contract_report_online_server: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs statuscontract report_online_server"
+
+test_cases:
+  - name: ""
+    command: ""
+    params:
+      key: ""
+
+
+
+
+
+
+
+
+
+
