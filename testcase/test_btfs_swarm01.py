@@ -13,7 +13,7 @@ HOST = "54.151.1.17"
 USERNAME = "ec2-user"
 PRIVATE_KEY_PATH = os.path.expanduser("~/.ssh/id_rsa")  # Update with your private key path
 COMMANDS_FILE = "../data/btfs_swarm.yml"
-
+#
 @pytest.fixture(scope="module")
 def btfs_handler():
     """Fixture to manage BtfsHandler setup and teardown."""
@@ -28,8 +28,9 @@ def test_btfs_swarm_addrs(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_swarm_addrs']
+    key = btfs_handler.commands['version_path']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=key)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "4001" not in stdout:
@@ -44,8 +45,9 @@ def test_btfs_swarm_addrs_listen(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_swarm_addrs_listen']
+    key = btfs_handler.commands['version_path']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=key)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "4001" not in stdout:
@@ -60,8 +62,9 @@ def test_btfs_swarm_addrs_local (btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_swarm_addrs_local']
+    key = btfs_handler.commands['version_path']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=key)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "4001" not in stdout:

@@ -1,0 +1,15 @@
+btfs:
+  version_path: "cd {key}"
+
+
+version_path:
+  - key: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+
+
+
+
+
+
+

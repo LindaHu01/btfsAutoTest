@@ -2,10 +2,14 @@ btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
-  btfs_swarm_addrs: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs"
-  btfs_swarm_addrs_listen: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs listen"
-  btfs_swarm_addrs_local: "cd /home/ec2-user/go/src/github.com/bittorrent/4.0_kehu && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs local"
+  btfs_swarm_addrs: "cd {key} && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs"
+  btfs_swarm_addrs_listen: "cd {key}  && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs listen"
+  btfs_swarm_addrs_local: "cd {key}  && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging600 && ./btfs swarm addrs local"
 
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
 
 
 test_cases:
