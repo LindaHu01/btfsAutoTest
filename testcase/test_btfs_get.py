@@ -23,9 +23,11 @@ def test_btfs_get(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_get']
-    key = btfs_handler.commands['test_cases'][0]['params']['key']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][0]['params']['key']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=key)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key

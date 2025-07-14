@@ -23,8 +23,10 @@ def test_btfs_diag_cmds(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_diag_cmds']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
@@ -39,11 +41,13 @@ def test_btfs_diag_sys(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_diag_sys']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
-    # 查看输出内容是否包含 key
+    # 查看输出内容是否包含 keys
     if "btfs_version" not in stdout:
         print("输出不包含 'btfs_version'，实际输出:", stdout)
     # Assert the command output

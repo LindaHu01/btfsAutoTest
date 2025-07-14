@@ -2,8 +2,18 @@ btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
-  btfs_multibase_encode: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 &&  echo -n {key0} | ./btfs multibase encode -b base16 > {key1}"
-  btfs_multibase_decode: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 &&  ./btfs multibase decode {key1}"
+  btfs_multibase_encode: "cd {key1} && export BTFS_PATH={key2} &&  echo -n {key3} | ./btfs multibase encode -b base16 > {key4}"
+  btfs_multibase_decode: "cd {key1} && export BTFS_PATH={key2} &&  ./btfs multibase decode {key4}"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
+
 
 test_cases:
   - name: "btfs_multibase_encode"

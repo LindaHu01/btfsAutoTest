@@ -2,20 +2,30 @@ btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
-  btfs_cid_base32: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid base32 {key}"
-  btfs_cid_bases: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid bases"
-  btfs_cid_codecs: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid codecs"
-  btfs_cid_format: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid format {key}"
-  btfs_cid_hashes: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs cid hashes"
+  btfs_cid_base32: "cd {key1} && export BTFS_PATH={key2} && ./btfs cid base32 {key3}"
+  btfs_cid_bases: "cd {key1} && export BTFS_PATH={key2} && ./btfs cid bases"
+  btfs_cid_codecs: "cd {key1} && export BTFS_PATH={key2} && ./btfs cid codecs"
+  btfs_cid_format: "cd {key1} && export BTFS_PATH={key2} && ./btfs cid format {key3}"
+  btfs_cid_hashes: "cd {key1} && export BTFS_PATH={key2} && ./btfs cid hashes"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
+
 
 
 test_cases:
   - name: "btfs_cid_base32"
     command: "btfs cid base32 {key}"
     params:
-      key: "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31"
+      key: "Qmaq8oBSDVFHPP4BcRJPHU5Q2ydvtUTFKe28VGspzfeSU8"
 
   - name: "btfs_cid_format"
     command: "btfs cid format {key}"
     params:
-      key: "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31"
+      key: "Qmaq8oBSDVFHPP4BcRJPHU5Q2ydvtUTFKe28VGspzfeSU8"

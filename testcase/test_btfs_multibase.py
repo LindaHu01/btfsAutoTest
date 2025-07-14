@@ -28,13 +28,15 @@ def test_btfs_multibase_encode_decode(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_multibase_encode']
-    key0 = btfs_handler.commands['test_cases'][0]['params']['key0']
-    key1 = btfs_handler.commands['test_cases'][0]['params']['key1']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][0]['params']['key0']
+    key4 = btfs_handler.commands['test_cases'][0]['params']['key1']
 
     # Execute the command 先加密后解密
-    btfs_handler.execute_command(command_template, key0=key0, key1=key1)
+    btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3, key4=key4)
     command_template = btfs_handler.commands['btfs']['btfs_multibase_decode']
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2,key4=key4)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key

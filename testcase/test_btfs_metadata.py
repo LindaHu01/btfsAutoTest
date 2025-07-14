@@ -30,19 +30,21 @@ def test_btfs_metadata_add(btfs_handler):
     # 操作元数据（metadata）的前提条件需要pin
     command_pin_template = btfs_handler.commands['btfs']['btfs_pin_add']
     command_template = btfs_handler.commands['btfs']['btfs_metadata_add']
-    key0 = btfs_handler.commands['test_cases'][0]['params']['key0']
-    key1 = btfs_handler.commands['test_cases'][0]['params']['key1']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][0]['params']['key0']
+    key4 = btfs_handler.commands['test_cases'][0]['params']['key1']
     # 确保 key2 是单行 JSON
-    if isinstance(key1, str):
-        key1 = json.dumps(json.loads(key1))  # 去除换行符
-    elif isinstance(key1, dict):
-        key1 = json.dumps(key1)
+    if isinstance(key4, str):
+        key4 = json.dumps(json.loads(key4))  # 去除换行符
+    elif isinstance(key4, dict):
+        key4 = json.dumps(key4)
 
     # 安全拼接命令
-    safe_key1 = shlex.quote(key1)  # 转义特殊字符
+    safe_key4 = shlex.quote(key4)  # 转义特殊字符
     # Execute the command
-    btfs_handler.execute_command(command_pin_template, key=key0)
-    stdout, stderr = btfs_handler.execute_command(command_template, key0=key0, key1=safe_key1)
+    btfs_handler.execute_command(command_pin_template, key1=key1, key2=key2, key3=key3)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3, key4=safe_key4)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
@@ -63,19 +65,21 @@ def test_btfs_metadata_rm(btfs_handler):
     # 操作元数据（metadata）的前提条件需要pin
     command_pin_template = btfs_handler.commands['btfs']['btfs_pin_add']
     command_template = btfs_handler.commands['btfs']['btfs_metadata_add']
-    key0 = btfs_handler.commands['test_cases'][0]['params']['key0']
-    key1 = btfs_handler.commands['test_cases'][0]['params']['key1']
-    # 确保 key1 是单行 JSON
-    if isinstance(key1, str):
-        key1 = json.dumps(json.loads(key1))  # 去除换行符
-    elif isinstance(key1, dict):
-        key1 = json.dumps(key1)
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][0]['params']['key0']
+    key4 = btfs_handler.commands['test_cases'][0]['params']['key1']
+    # 确保 key4 是单行 JSON
+    if isinstance(key4, str):
+        key4 = json.dumps(json.loads(key4))  # 去除换行符
+    elif isinstance(key4, dict):
+        key4 = json.dumps(key4)
 
     # 安全拼接命令
-    safe_key1 = shlex.quote(key1)  # 转义特殊字符
+    safe_key4 = shlex.quote(key4)  # 转义特殊字符
     # Execute the command
-    btfs_handler.execute_command(command_pin_template, key=key0)
-    stdout, stderr = btfs_handler.execute_command(command_template, key0=key0, key1=safe_key1)
+    btfs_handler.execute_command(command_pin_template, key1=key1, key2=key2, key3=key3)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3, key4=safe_key4)
     print("stdout: " + stdout)
     # 获取 metadata add的hash
     try:
@@ -96,7 +100,7 @@ def test_btfs_metadata_rm(btfs_handler):
     command_template = btfs_handler.commands['btfs']['btfs_metadata_rm']
     key = btfs_handler.commands['test_cases'][1]['params']['key']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key0=metadata_hash, key1=key)
+    stdout, stderr = btfs_handler.execute_command(command_template,key1=key1, key2=key2, key3=metadata_hash, key4=key)
     # 查看输出内容是否包含 key
     if "Hash" not in stdout:
         print("输出不包含 'Hash'，实际输出:", stdout)

@@ -2,8 +2,17 @@ btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
-  btfs_refs_local: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 &&  ./btfs refs local"
+  btfs_refs_local: "cd {key1} && export BTFS_PATH={key2} &&  ./btfs refs local"
 
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
 
 test_cases:
   - name: "btfs_refs_local"

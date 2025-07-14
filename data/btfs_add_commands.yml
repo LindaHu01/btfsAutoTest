@@ -1,17 +1,27 @@
 btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
-  btfs_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs add {key}"
-  btfs_add_r: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs add -r {key}"
+  btfs_add: "cd {key1} && export BTFS_PATH={key2} && ./btfs add {key3}"
+  btfs_add_r: "cd {key1} && export BTFS_PATH={key2} && ./btfs add -r {key3}"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
+
 
 test_cases:
   - name: "btfs add"
     command: "btfs add"
     params:
-      key: "a.txt"
+      key: "aa.txt"
 
   - name: "btfs add -r"
     command: "btfs add -r"
     params:
-      key: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
+      key: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"

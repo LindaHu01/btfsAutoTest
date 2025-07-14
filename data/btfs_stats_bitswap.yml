@@ -1,10 +1,18 @@
 btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
-  btfs_path: "/home/ec2-user/btfs/.btfs.staging5"
-  btfs_stats_bitswap: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 && ./btfs stats bitswap"
-  btfs_stats_bw: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 && ./btfs stats bw"
-  btfs_stats_repo: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging5 && ./btfs stats repo"
+  btfs_path: "{key2}"
+  btfs_stats_bitswap: "cd {key1} && export BTFS_PATH={key2} && ./btfs stats bitswap"
+  btfs_stats_bw: "cd {key1} && export BTFS_PATH={key2} && ./btfs stats bw"
+  btfs_stats_repo: "cd {key1} && export BTFS_PATH={key2} && ./btfs stats repo"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
 
 
 test_cases:

@@ -2,11 +2,21 @@ btfs:
   start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging333_01' && ./btfs daemon&"
   directory: "/home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs"
   btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
-  btfs_bootstrap_add: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add {key}"
-  btfs_bootstrap_add_default: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap add default"
-  btfs_bootstrap_list: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap list"
-  btfs_bootstrap_rm: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap rm {key}"
-  btfs_bootstrap_rm_all: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 && ./btfs bootstrap rm all"
+  btfs_bootstrap_add: "cd {key1} && export BTFS_PATH={key2} && ./btfs bootstrap add {key3}"
+  btfs_bootstrap_add_default: "cd {key1} && export BTFS_PATH={key2} && ./btfs bootstrap add default"
+  btfs_bootstrap_list: "cd {key1} && export BTFS_PATH={key2} && ./btfs bootstrap list"
+  btfs_bootstrap_rm: "cd {key1} && export BTFS_PATH={key2} && ./btfs bootstrap rm {key3}"
+  btfs_bootstrap_rm_all: "cd {key1} && export BTFS_PATH={key2} && ./btfs bootstrap rm all"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
+
 
 test_cases:
   - name: "btfs_bootstrap_add"

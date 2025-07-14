@@ -4,6 +4,16 @@ btfs:
   btfs_path: "/home/ec2-user/btfs/.btfs.staging333_01"
   btfs_files_chcid: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH=/home/ec2-user/btfs/.btfs.staging333_01 &&  ./btfs files stat --hash /my-images"
 
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging600"
+
+
 test_cases:
   - name: "btfs_files_chcid"
     command: "btfs files chcid {key}"

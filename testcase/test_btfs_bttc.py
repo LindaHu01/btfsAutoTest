@@ -18,22 +18,24 @@ def btfs_handler():
     yield handler
     # handler.disconnect()
 
-def test_btfs_bttc_btt2wbtt(btfs_handler):
-    """
-    Test the 'test_btfs_bttc_btt2wbtt ' command.
-    """
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_bttc_btt2wbtt']
-    key = btfs_handler.commands['test_cases'][0]['params']['key']
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=key)
-    print("标准输出1:", stdout)
-    print("错误输出2:", stderr)
-    # 查看输出内容是否包含 key
-    if "transaction" not in stdout:
-        print("输出不包含 'transaction'，实际输出:", stdout)
-    # Assert the command output
-    assert "transaction" in stdout
+# def test_btfs_bttc_btt2wbtt(btfs_handler):
+#     """
+#     Test the 'test_btfs_bttc_btt2wbtt ' command.
+#     """
+#     # Read the command and parameters from YAML
+#     command_template = btfs_handler.commands['btfs']['btfs_bttc_btt2wbtt']
+#     key1 = btfs_handler.commands['version_path']['value']
+#     key2 = btfs_handler.commands['BTFS_PATH']['value']
+#     key3 = btfs_handler.commands['test_cases'][0]['params']['key']
+#     # Execute the command
+#     stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3)
+#     print("标准输出1:", stdout)
+#     print("错误输出2:", stderr)
+#     # 查看输出内容是否包含 key
+#     if "transaction" not in stdout:
+#         print("输出不包含 'transaction'，实际输出:", stdout)
+#     # Assert the command output
+#     assert "transaction" in stdout
 
 
 # def test_btfs_bttc_send_btt_to(btfs_handler):

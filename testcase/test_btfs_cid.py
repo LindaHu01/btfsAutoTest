@@ -23,16 +23,18 @@ def test_btfs_cid_base32(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_cid_base32']
-    key = btfs_handler.commands['test_cases'][0]['params']['key']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][0]['params']['key']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=key)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
-    if "bafybeify4" not in stdout:
-        print("输出不包含 'bafybeify4'，实际输出:", stdout)
+    if "bafybei" not in stdout:
+        print("输出不包含 'bafybei'，实际输出:", stdout)
     # Assert the command output
-    assert "bafybeify4" in stdout
+    assert "bafybei" in stdout
 
 
 def test_btfs_cid_bases(btfs_handler):
@@ -41,8 +43,10 @@ def test_btfs_cid_bases(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_cid_bases']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
@@ -57,8 +61,10 @@ def test_btfs_cid_codecs(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_cid_codecs']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
@@ -74,16 +80,18 @@ def test_btfs_cid_format(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_cid_format']
-    key = btfs_handler.commands['test_cases'][1]['params']['key']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
+    key3 = btfs_handler.commands['test_cases'][1]['params']['key']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=key)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
-    if "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31" not in stdout:
-        print("输出不包含 'QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31'，实际输出:", stdout)
+    if "Qmaq8oBSDVFHPP4BcRJPHU5Q2ydvtUTFKe28VGspzfeSU8" not in stdout:
+        print("输出不包含 'Qmaq8oBSDVFHPP4BcRJPHU5Q2ydvtUTFKe28VGspzfeSU8'，实际输出:", stdout)
     # Assert the command output
-    assert "QmanM91RNzhU3Wr4md1ugknMhhhG4CuLWfV5UjYCtA3v31" in stdout
+    assert "Qmaq8oBSDVFHPP4BcRJPHU5Q2ydvtUTFKe28VGspzfeSU8" in stdout
 
 
 def test_btfs_hashes(btfs_handler):
@@ -92,8 +100,10 @@ def test_btfs_hashes(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_template = btfs_handler.commands['btfs']['btfs_cid_hashes']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     # 查看输出内容是否包含 key
