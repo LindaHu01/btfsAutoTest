@@ -28,8 +28,10 @@ def test_btfs_status_daily_last_report_time(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_status_daily_last_report_time']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "every_day_seconds" not in stdout:
@@ -58,8 +60,10 @@ def test_btfs_status_btfs_daily_total(btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_status_btfs_daily_total']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=None)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "total_count" not in stdout:
@@ -73,9 +77,10 @@ def test_btfs_status_contract_lastinfo (btfs_handler):
     """
     # Read the command and parameters from YAML
     command_rm_template = btfs_handler.commands['btfs']['btfs_status_contract_lastinfo']
-    key = btfs_handler.commands['version_path']['value']
+    key1 = btfs_handler.commands['version_path']['value']
+    key2 = btfs_handler.commands['BTFS_PATH']['value']
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_rm_template, key=key)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
     if "last_signed_info" not in stdout:
