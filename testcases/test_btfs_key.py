@@ -1,4 +1,5 @@
 import random
+from pathlib import Path
 
 import pytest
 import os
@@ -9,7 +10,8 @@ from api.BtfsHandler import BtfsHandler
 HOST = "54.151.1.17"
 USERNAME = "ec2-user"
 PRIVATE_KEY_PATH = os.path.expanduser("~/.ssh/id_rsa")  # Update with your private key path
-COMMANDS_FILE = "../data/btfs_key_commands.yml"
+project_root = Path(__file__).parent.parent
+COMMANDS_FILE = project_root / 'data' / 'btfs_key_commands.yml'
 
 @pytest.fixture(scope="module")
 def btfs_handler():

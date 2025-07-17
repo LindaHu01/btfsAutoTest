@@ -1,3 +1,9 @@
+import json
+import random
+import re
+import shlex
+from pathlib import Path
+
 import pytest
 import os
 
@@ -7,7 +13,8 @@ from api.BtfsHandler import BtfsHandler
 HOST = "54.151.1.17"
 USERNAME = "ec2-user"
 PRIVATE_KEY_PATH = os.path.expanduser("~/.ssh/id_rsa")  # Update with your private key path
-COMMANDS_FILE = "../data/btfs_files_commands.yml"
+project_root = Path(__file__).parent.parent
+COMMANDS_FILE = project_root / 'data' / 'btfs_settlement_commands.yml'
 
 @pytest.fixture(scope="module")
 def btfs_handler():
@@ -17,25 +24,20 @@ def btfs_handler():
     yield handler
     # handler.disconnect()
 
-def test_btfs_files_chcid(btfs_handler):
+def test_btfs_settlement_list(btfs_handler):
     """
-    Test the 'test_btfs_files_chcid ' command.
+    Test the 'test_btfs_settlement_list' command.
     """
     # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_files_chcid']
+    # 操作元数据（metadata）的前提条件需要pin
+    command_rm_template = btfs_handler.commands['btfs']['btfs_settlement_list']
     key1 = btfs_handler.commands['version_path']['value']
     key2 = btfs_handler.commands['BTFS_PATH']['value']
-    key3 = btfs_handler.commands['test_cases'][0]['params']['key']
-    print("标准输出:", key3)
     # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2, key3=key3)
-    print("标准输出:", command_template)
+    stdout, stderr = btfs_handler.execute_command(command_rm_template, key1=key1, key2=key2)
     print("标准输出1:", stdout)
     print("错误输出2:", stderr)
-    # 查看输出内容是否包含 key
-    if "bafyb4ictm4q" not in stdout:
-        print("输出不包含 'bafyb4ictm4q'，实际输出:", stdout)
+    if "settlements" not in stdout:
+        print("输出不包含 'settlements'，实际输出:", stdout)
     # Assert the command output
-    assert "bafyb4ictm4q" in stdout
-
-
+    assert "settlements" in stdout
