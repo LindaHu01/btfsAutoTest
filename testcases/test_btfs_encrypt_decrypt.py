@@ -18,6 +18,7 @@ COMMANDS_FILE = project_root / 'data' / 'btfs_encrypt_decrypt.yml'
 # 全局变量用于存储加密后的 CID
 encrypted_cid = None
 encrypted_cid_to = None
+encrypted_cid_p = None
 
 @pytest.fixture(scope="module")
 def btfs_handler():
@@ -145,4 +146,57 @@ def test_btfs_decrypt_from(btfs_handler):
     # Assert the command output
     assert "sjdklerjjaff" in stdout
 
+
+@pytest.mark.order(5)
+def test_btfs_encrypt_p(btfs_handler):
+    global encrypted_cid_p  # 声明使用全局变量
+    """
+    Test the 'test_btfs_encrypt_p' command.
+    """
+    # Read the command and parameters from YAML
+    command_template = btfs_handler.commands['btfs']['btfs_encrypt_p']
+    key1 = btfs_handler.commands['version_path']['value']
+    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+
+    # Execute the command
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4)
+    print("标准输出1:", stdout)
+    print("标准输出1:", stdout)
+    print("错误输出2:", stderr)
+    # 提取 CID (更健壮的正则表达式)
+    cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
+    assert cid_match, "未在输出中找到有效的CID"
+
+    encrypted_cid_p = cid_match.group(1)
+    print(f"提取到的CID: {encrypted_cid_p}")
+
+    # Assert the command output
+    assert "Qm" in stdout
+
+@pytest.mark.order(6)
+def test_btfs_decrypt_p(btfs_handler):
+    global encrypted_cid_p
+    assert encrypted_cid_p is not None, "未获取到加密后的 CID"
+    """
+    Test the 'test_btfs_decrypt_p' command.
+    """
+    # Read the command and parameters from YAML
+    command_template = btfs_handler.commands['btfs']['btfs_decrypt_p']
+    key1 = btfs_handler.commands['version_path']['value']
+    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+
+    # Execute the command
+    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4, key5=encrypted_cid_p)
+    print("解密标准输出:", stdout)
+    print("解密错误输出:", stderr)
+
+    # 添加更详细的错误输出
+    if "sjdklerjjaff" not in stdout:
+        print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
+        print(f"使用的CID: {encrypted_cid_p}")
+        print(f"错误输出: {stderr}")
+        print(f"stdout: {stdout}")
+
+    # Assert the command output
+    assert "sjdklerjjaff" in stdout
 
