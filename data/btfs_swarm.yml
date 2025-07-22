@@ -5,6 +5,7 @@ btfs:
   btfs_swarm_addrs: "cd {key1} && export BTFS_PATH={key2} && ./btfs swarm addrs"
   btfs_swarm_addrs_listen: "cd {key1}  && export BTFS_PATH={key2} && ./btfs swarm addrs listen"
   btfs_swarm_addrs_local: "cd {key1}  && export BTFS_PATH={key2} && ./btfs swarm addrs local"
+  btfs_swarm_connect: "cd {key1}  && export BTFS_PATH={key2} && ./btfs swarm connect {key3}"
 
 
 version_path:
@@ -12,14 +13,14 @@ version_path:
   value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
 
 BTFS_PATH:
-  value: "/home/ec2-user/btfs/.btfs.staging600"
+  value: "/home/ec2-user/btfs/.btfs.staging412"
 
 
 test_cases:
-  - name: ""
-    command: ""
+  - name: "btfs_swarm_connect"
+    command: "btfs swarm connect"
     params:
-      key: ""
+      key3: "/ip4/172.31.15.101/tcp/14001/p2p/16Uiu2HAmKsMZH6RNi6rWCpfcnzek2iPjcNcvrcgjL7pERFCpr1AV"
 
 
 
