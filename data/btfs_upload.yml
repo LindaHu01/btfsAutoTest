@@ -1,0 +1,41 @@
+btfs:
+  start_daemon: "cd /home/ec2-user/go/src/github.com/bittorrent/3.3.0_new/go-btfs/cmd/btfs && export BTFS_PATH='/home/ec2-user/btfs/.btfs.staging5' && ./btfs daemon&"
+  btfs_upload: "cd {key1} && export BTFS_PATH={key2} && ./btfs storage upload {key3}"
+  btfs_upload_sp: "cd {key1}  && export BTFS_PATH={key2} && ./btfs storage upload {key3} -m=custom -s={key4} --token-type=WBTT"
+  btfs_upload_sp_copy1: "cd {key1}  && export BTFS_PATH={key2} && ./btfs storage upload {key3} --copy=1 --token-type=WBTT"
+  btfs_upload_sp_copy3: "cd {key1}  && export BTFS_PATH={key2} && ./btfs storage upload {key3} --copy=3 --token-type=WBTT"
+  btfs_upload_sp_copy5: "cd {key1}  && export BTFS_PATH={key2} && ./btfs storage upload {key3} --copy=5 --token-type=WBTT"
+  btfs_upload_token_usdd: "cd {key1} && export BTFS_PATH={key2} && ./btfs storage upload {key5} --token-type=USDD"
+  btfs_upload_token_usdt: "cd {key1} && export BTFS_PATH={key2} && ./btfs storage upload {key6} --token-type=USDT"
+
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging412"
+
+
+test_cases:
+  - name: "btfs_upload_sp_copy"
+    command: "btfs storage upload"
+    params:
+      key3: "QmT7NnrqpgNKRU2oKQjb7tiHXQKBU7pr7mSu3iph5eDLxn"
+      key4: "16Uiu2HAmKsMZH6RNi6rWCpfcnzek2iPjcNcvrcgjL7pERFCpr1AV"
+      key5: "QmeJAjrHYUanXKfKpRVGiTqP8GYKePQXVwJqGLtDWLAGKm"
+      key6: "QmeJAjrHYUanXKfKpRVGiTqP8GYKePQXVwJqGLtDWLAGKm"
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+btfs:
+  btfs_encrypt: "cd {key1} && export BTFS_PATH={key2} && RANDOM_NUM=$(( RANDOM % 100000 )) && echo 'sjdklerjjaff' > file$RANDOM_NUM.txt && ./btfs encrypt file$RANDOM_NUM.txt"
+  btfs_decrypt: "cd {key1} && export BTFS_PATH={key2} && ./btfs decrypt {key3}"
+  btfs_encrypt_to: "cd {key1} && export BTFS_PATH={key4} && RANDOM_NUM=$(( RANDOM % 100000 )) && echo 'sjdklerjjaff' > file$RANDOM_NUM.txt && ./btfs encrypt file$RANDOM_NUM.txt --to=16Uiu2HAmKsMZH6RNi6rWCpfcnzek2iPjcNcvrcgjL7pERFCpr1AV"
+  btfs_decrypt_from: "cd {key1} && export BTFS_PATH={key4} && ./btfs decrypt {key5}"
+
+
+version_path:
+  version: "4.0"
+  value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
+
+BTFS_PATH:
+  value: "/home/ec2-user/btfs/.btfs.staging412"
+  value2: "/home/ec2-user/btfs/.btfs.staging5"
+
+
+test_cases:
+  - name: "btfs_encrypt"
+    command: "btfs_encrypt"
+    params:
+      key3: ""
+
+
+
+
+
+
+
+
+
+
+
+
+
+
