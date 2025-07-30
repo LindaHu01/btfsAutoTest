@@ -4,6 +4,7 @@ import re
 import shlex
 from pathlib import Path
 
+import allure
 import pytest
 import os
 
@@ -20,183 +21,218 @@ encrypted_cid = None
 encrypted_cid_to = None
 encrypted_cid_p = None
 
-@pytest.fixture(scope="module")
-def btfs_handler():
-    """Fixture to manage BtfsHandler setup and teardown."""
-    handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
-    handler.connect()
-    yield handler
-    # handler.disconnect()
 
-@pytest.mark.order(1)
-def test_btfs_encrypt(btfs_handler):
-    global encrypted_cid  # 声明使用全局变量
-    """
-    Test the 'test_btfs_encrypt' command.
-    """
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_encrypt']
-    key1 = btfs_handler.commands['version_path']['value']
-    key2 = btfs_handler.commands['BTFS_PATH']['value']
+@allure.suite("BTFS Encrypt Decrypt Tests")
+class TestBtfsUpload:
+    @pytest.fixture(scope="class")
+    def btfs_handler(self):
+        """Fixture to manage BtfsHandler setup and teardown."""
+        handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
+        handler.connect()
+        yield handler
+        # handler.disconnect()
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
-    print("标准输出1:", stdout)
-    print("标准输出1:", stdout)
-    print("错误输出2:", stderr)
-    # 提取 CID (更健壮的正则表达式)
-    cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
-    assert cid_match, "未在输出中找到有效的CID"
+    @allure.story("BTFS Enctypt")
+    @allure.title("test_btfs_encrypt")
+    @pytest.mark.order(1)
+    def test_btfs_encrypt(btfs_handler):
+        global encrypted_cid  # 声明使用全局变量
+        """
+        Test the 'test_btfs_encrypt' command.
+        """
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_encrypt']
+            key1 = btfs_handler.commands['version_path']['value']
+            key2 = btfs_handler.commands['BTFS_PATH']['value']
 
-    encrypted_cid = cid_match.group(1)
-    print(f"提取到的CID: {encrypted_cid}")
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key2=key2)
+            print("标准输出1:", stdout)
+            print("标准输出1:", stdout)
+            print("错误输出2:", stderr)
+            # 提取 CID (更健壮的正则表达式)
+            cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
+        with allure.step("Validate output"):
+            assert cid_match, "未在输出中找到有效的CID"
 
-    # Assert the command output
-    assert "Qm" in stdout
+        encrypted_cid = cid_match.group(1)
+        print(f"提取到的CID: {encrypted_cid}")
 
-@pytest.mark.order(2)
-def test_btfs_decrypt(btfs_handler):
-    """
-    Test the 'test_btfs_decrypt' command.
-    """
-    global encrypted_cid
-    assert encrypted_cid is not None, "未获取到加密后的 CID"
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_decrypt']
-    key1 = btfs_handler.commands['version_path']['value']
-    key2 = btfs_handler.commands['BTFS_PATH']['value']
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "Qm" in stdout
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(
-        command_template,
-        key1=key1,
-        key2=key2,
-        key3=encrypted_cid
-    )
-    print("解密标准输出:", stdout)
-    print("解密错误输出:", stderr)
+    @allure.story("BTFS decrypt Test")
+    @allure.title("test_btfs_decrypt")
+    @pytest.mark.order(2)
+    def test_btfs_decrypt(btfs_handler):
+        """
+        Test the 'test_btfs_decrypt' command.
+        """
+        global encrypted_cid
+        assert encrypted_cid is not None, "未获取到加密后的 CID"
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_decrypt']
+            key1 = btfs_handler.commands['version_path']['value']
+            key2 = btfs_handler.commands['BTFS_PATH']['value']
 
-    # 添加更详细的错误输出
-    if "sjdklerjjaff" not in stdout:
-        print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
-        print(f"使用的CID: {encrypted_cid}")
-        print(f"错误输出: {stderr}")
-        print(f"stdout: {stdout}")
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(
+                command_template,
+                key1=key1,
+                key2=key2,
+                key3=encrypted_cid
+            )
+            print("解密标准输出:", stdout)
+            print("解密错误输出:", stderr)
 
-    # Assert the command output
-    assert "sjdklerjjaff" in stdout
+            # 添加更详细的错误输出
+            if "sjdklerjjaff" not in stdout:
+                print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
+                print(f"使用的CID: {encrypted_cid}")
+                print(f"错误输出: {stderr}")
+                print(f"stdout: {stdout}")
 
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "sjdklerjjaff" in stdout
 
-@pytest.mark.order(3)
-def test_btfs_encrypt_to(btfs_handler):
-    global encrypted_cid_to  # 声明使用全局变量
-    """
-    Test the 'test_btfs_encrypt_to' command.
-    """
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_encrypt_to']
-    key1 = btfs_handler.commands['version_path']['value']
-    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+    @allure.story("BTFS encrypt to Test")
+    @allure.title("test_btfs_encrypt_to")
+    @pytest.mark.order(3)
+    def test_btfs_encrypt_to(btfs_handler):
+        global encrypted_cid_to  # 声明使用全局变量
+        """
+        Test the 'test_btfs_encrypt_to' command.
+        """
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_encrypt_to']
+            key1 = btfs_handler.commands['version_path']['value']
+            key4 = btfs_handler.commands['BTFS_PATH']['value2']
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4)
-    print("标准输出1:", stdout)
-    print("标准输出1:", stdout)
-    print("错误输出2:", stderr)
-    # 提取 CID (更健壮的正则表达式)
-    cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
-    assert cid_match, "未在输出中找到有效的CID"
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4)
+            print("标准输出1:", stdout)
+            print("标准输出1:", stdout)
+            print("错误输出2:", stderr)
+            # 提取 CID (更健壮的正则表达式)
+            cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
 
-    encrypted_cid_to = cid_match.group(1)
-    print(f"提取到的CID: {encrypted_cid_to}")
+        with allure.step("Validate output"):
+            assert cid_match, "未在输出中找到有效的CID"
 
-    # Assert the command output
-    assert "Qm" in stdout
+        encrypted_cid_to = cid_match.group(1)
+        print(f"提取到的CID: {encrypted_cid_to}")
 
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "Qm" in stdout
 
-@pytest.mark.order(4)
-def test_btfs_decrypt_from(btfs_handler):
-    """
-    Test the 'test_btfs_decrypt_from' command.
-    """
-    global encrypted_cid_to
-    assert encrypted_cid_to is not None, "未获取到加密后的 CID"
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_decrypt_from']
-    key1 = btfs_handler.commands['version_path']['value']
-    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+    @allure.story("BTFS decrypt from Test")
+    @allure.title("test_btfs_decrypt_from")
+    @pytest.mark.order(4)
+    def test_btfs_decrypt_from(btfs_handler):
+        """
+        Test the 'test_btfs_decrypt_from' command.
+        """
+        global encrypted_cid_to
+        assert encrypted_cid_to is not None, "未获取到加密后的 CID"
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_decrypt_from']
+            key1 = btfs_handler.commands['version_path']['value']
+            key4 = btfs_handler.commands['BTFS_PATH']['value2']
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(
-        command_template,
-        key1=key1,
-        key4=key4,
-        key5=encrypted_cid_to
-    )
-    print("解密标准输出:", stdout)
-    print("解密错误输出:", stderr)
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(
+                command_template,
+                key1=key1,
+                key4=key4,
+                key5=encrypted_cid_to
+            )
+            print("解密标准输出:", stdout)
+            print("解密错误输出:", stderr)
 
-    # 添加更详细的错误输出
-    if "sjdklerjjaff" not in stdout:
-        print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
-        print(f"使用的CID: {encrypted_cid_to}")
-        print(f"错误输出: {stderr}")
-        print(f"stdout: {stdout}")
+            # 添加更详细的错误输出
+            if "sjdklerjjaff" not in stdout:
+                print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
+                print(f"使用的CID: {encrypted_cid_to}")
+                print(f"错误输出: {stderr}")
+                print(f"stdout: {stdout}")
 
-    # Assert the command output
-    assert "sjdklerjjaff" in stdout
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "sjdklerjjaff" in stdout
 
+    @allure.story("BTFS encrypt p")
+    @allure.title("test_btfs_encrypt_p")
+    @pytest.mark.order(5)
+    def test_btfs_encrypt_p(btfs_handler):
+        global encrypted_cid_p  # 声明使用全局变量
+        """
+        Test the 'test_btfs_encrypt_p' command.
+        """
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_encrypt_p']
+            key1 = btfs_handler.commands['version_path']['value']
+            key4 = btfs_handler.commands['BTFS_PATH']['value2']
 
-@pytest.mark.order(5)
-def test_btfs_encrypt_p(btfs_handler):
-    global encrypted_cid_p  # 声明使用全局变量
-    """
-    Test the 'test_btfs_encrypt_p' command.
-    """
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_encrypt_p']
-    key1 = btfs_handler.commands['version_path']['value']
-    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4)
+            print("标准输出1:", stdout)
+            print("标准输出1:", stdout)
+            print("错误输出2:", stderr)
+            # 提取 CID (更健壮的正则表达式)
+            cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4)
-    print("标准输出1:", stdout)
-    print("标准输出1:", stdout)
-    print("错误输出2:", stderr)
-    # 提取 CID (更健壮的正则表达式)
-    cid_match = re.search(r'(Qm[1-9A-HJ-NP-Za-km-z]{44,})', stdout)
-    assert cid_match, "未在输出中找到有效的CID"
+        with allure.step("Validate output"):
+            assert cid_match, "未在输出中找到有效的CID"
 
-    encrypted_cid_p = cid_match.group(1)
-    print(f"提取到的CID: {encrypted_cid_p}")
+        encrypted_cid_p = cid_match.group(1)
+        print(f"提取到的CID: {encrypted_cid_p}")
 
-    # Assert the command output
-    assert "Qm" in stdout
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "Qm" in stdout
 
-@pytest.mark.order(6)
-def test_btfs_decrypt_p(btfs_handler):
-    global encrypted_cid_p
-    assert encrypted_cid_p is not None, "未获取到加密后的 CID"
-    """
-    Test the 'test_btfs_decrypt_p' command.
-    """
-    # Read the command and parameters from YAML
-    command_template = btfs_handler.commands['btfs']['btfs_decrypt_p']
-    key1 = btfs_handler.commands['version_path']['value']
-    key4 = btfs_handler.commands['BTFS_PATH']['value2']
+    @allure.story("BTFS decrypt p")
+    @allure.title("test_btfs_decrypt_p")
+    @pytest.mark.order(6)
+    def test_btfs_decrypt_p(btfs_handler):
+        global encrypted_cid_p
+        assert encrypted_cid_p is not None, "未获取到加密后的 CID"
+        """
+        Test the 'test_btfs_decrypt_p' command.
+        """
+        # Read the command and parameters from YAML
+        with allure.step("Prepare command parameters"):
+            command_template = btfs_handler.commands['btfs']['btfs_decrypt_p']
+            key1 = btfs_handler.commands['version_path']['value']
+            key4 = btfs_handler.commands['BTFS_PATH']['value2']
 
-    # Execute the command
-    stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4, key5=encrypted_cid_p)
-    print("解密标准输出:", stdout)
-    print("解密错误输出:", stderr)
+        # Execute the command
+        with allure.step("Execute command"):
+            stdout, stderr = btfs_handler.execute_command(command_template, key1=key1, key4=key4, key5=encrypted_cid_p)
+            print("解密标准输出:", stdout)
+            print("解密错误输出:", stderr)
 
-    # 添加更详细的错误输出
-    if "sjdklerjjaff" not in stdout:
-        print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
-        print(f"使用的CID: {encrypted_cid_p}")
-        print(f"错误输出: {stderr}")
-        print(f"stdout: {stdout}")
+            # 添加更详细的错误输出
+            if "sjdklerjjaff" not in stdout:
+                print(f"输出不包含 'sjdklerjjaff'，实际输出: {stdout}")
+                print(f"使用的CID: {encrypted_cid_p}")
+                print(f"错误输出: {stderr}")
+                print(f"stdout: {stdout}")
 
-    # Assert the command output
-    assert "sjdklerjjaff" in stdout
+        # Assert the command output
+        with allure.step("Validate output"):
+            assert "sjdklerjjaff" in stdout
 
