@@ -14,7 +14,7 @@ version_path:
 
 
 BTFS_PATH:
-  value: "/home/ec2-user/btfs/.btfs.staging600"
+  value: "/home/ec2-user/btfs/.btfs.staging412"
 
 test_cases:
   - name: "btfs_key_gen"

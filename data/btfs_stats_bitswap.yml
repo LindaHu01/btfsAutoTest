@@ -12,7 +12,7 @@ version_path:
   value: "/home/ec2-user/go/src/github.com/bittorrent/4.0_kehu"
 
 BTFS_PATH:
-  value: "/home/ec2-user/btfs/.btfs.staging600"
+  value: "/home/ec2-user/btfs/.btfs.staging412"
 
 
 test_cases:
