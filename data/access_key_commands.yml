@@ -22,24 +22,24 @@ test_cases:
   - name: "btfs_accesskey_get"
     command: "btfs accesskey get {key}"
     params:
-      key: "1889036c-b7ac-43bc-a374-fb8fa91a205e"
+      key: "27fe6351-0f41-402c-8e1f-ec4e89f3e5e9"
 
   - name: "btfs_accesskey_disable"
     command: "btfs accesskey disable {key}"
     params:
-      key: "1889036c-b7ac-43bc-a374-fb8fa91a205e"
+      key: "27fe6351-0f41-402c-8e1f-ec4e89f3e5e9"
 
   - name: "btfs_accesskey_enable"
     command: "btfs accesskey enable {key}"
     params:
-      key: "1889036c-b7ac-43bc-a374-fb8fa91a205e"
+      key: "27fe6351-0f41-402c-8e1f-ec4e89f3e5e9"
 
   - name: "btfs_accesskey_reset"
     command: "btfs accesskey reset {key}"
     params:
-      key: "1889036c-b7ac-43bc-a374-fb8fa91a205e"
+      key: "27fe6351-0f41-402c-8e1f-ec4e89f3e5e9"
 
   - name: "btfs_accesskey_delete"
     command: "btfs accesskey delete {key}"
     params:
-      key: "1889036c-b7ac-43bc-a374-fb8fa91a205e"
+      key: "27fe6351-0f41-402c-8e1f-ec4e89f3e5e9"
