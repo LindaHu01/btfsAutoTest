@@ -30,7 +30,7 @@ class TestBtfsPin:
 
     @allure.story("BTFS Pin Tests")
     @allure.title("test_btfs_pin_add")
-    def test_btfs_pin_add(btfs_handler):
+    def test_btfs_pin_add(self, btfs_handler):
         """
         Test the 'test_btfs_pin_add ' command.
         """
@@ -52,7 +52,7 @@ class TestBtfsPin:
         # Assert the command output
         with allure.step("Validate output"):
             assert "pinned" in stdout
-    # def test_btfs_pin_rm(btfs_handler):
+    # def test_btfs_pin_rm(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_pin_rm ' command.
     #     """

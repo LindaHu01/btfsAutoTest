@@ -35,7 +35,7 @@ class TestBtfsUpload:
     @allure.story("BTFS Enctypt")
     @allure.title("test_btfs_encrypt")
     @pytest.mark.order(1)
-    def test_btfs_encrypt(btfs_handler):
+    def test_btfs_encrypt(self, btfs_handler):
         global encrypted_cid  # 声明使用全局变量
         """
         Test the 'test_btfs_encrypt' command.
@@ -67,7 +67,7 @@ class TestBtfsUpload:
     @allure.story("BTFS decrypt Test")
     @allure.title("test_btfs_decrypt")
     @pytest.mark.order(2)
-    def test_btfs_decrypt(btfs_handler):
+    def test_btfs_decrypt(self, btfs_handler):
         """
         Test the 'test_btfs_decrypt' command.
         """
@@ -104,7 +104,7 @@ class TestBtfsUpload:
     @allure.story("BTFS encrypt to Test")
     @allure.title("test_btfs_encrypt_to")
     @pytest.mark.order(3)
-    def test_btfs_encrypt_to(btfs_handler):
+    def test_btfs_encrypt_to(self, btfs_handler):
         global encrypted_cid_to  # 声明使用全局变量
         """
         Test the 'test_btfs_encrypt_to' command.
@@ -137,7 +137,7 @@ class TestBtfsUpload:
     @allure.story("BTFS decrypt from Test")
     @allure.title("test_btfs_decrypt_from")
     @pytest.mark.order(4)
-    def test_btfs_decrypt_from(btfs_handler):
+    def test_btfs_decrypt_from(self, btfs_handler):
         """
         Test the 'test_btfs_decrypt_from' command.
         """
@@ -174,7 +174,7 @@ class TestBtfsUpload:
     @allure.story("BTFS encrypt p")
     @allure.title("test_btfs_encrypt_p")
     @pytest.mark.order(5)
-    def test_btfs_encrypt_p(btfs_handler):
+    def test_btfs_encrypt_p(self, btfs_handler):
         global encrypted_cid_p  # 声明使用全局变量
         """
         Test the 'test_btfs_encrypt_p' command.
@@ -207,7 +207,7 @@ class TestBtfsUpload:
     @allure.story("BTFS decrypt p")
     @allure.title("test_btfs_decrypt_p")
     @pytest.mark.order(6)
-    def test_btfs_decrypt_p(btfs_handler):
+    def test_btfs_decrypt_p(self, btfs_handler):
         global encrypted_cid_p
         assert encrypted_cid_p is not None, "未获取到加密后的 CID"
         """

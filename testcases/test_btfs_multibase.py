@@ -20,7 +20,7 @@ COMMANDS_FILE = project_root / 'data' / 'btfs_multibase_commands.yml'
 
 @allure.suite("BTFS Multibase Tests")
 class TestBtfsMultibase:
-    @pytest.fixture(scope="module")
+    @pytest.fixture(scope="class")
     def btfs_handler(self):
         """Fixture to manage BtfsHandler setup and teardown."""
         handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
@@ -30,7 +30,7 @@ class TestBtfsMultibase:
 
     @allure.story("BTFS Multibase encode decode")
     @allure.title("test_btfs_multibase_encode_decode")
-    def test_btfs_multibase_encode_decode(btfs_handler):
+    def test_btfs_multibase_encode_decode(self, btfs_handler):
         """
         Test the 'test_btfs_multibase_encode_decode ' command.
         """
@@ -56,7 +56,7 @@ class TestBtfsMultibase:
         with allure.step("Validate output"):
             assert "hello" in stdout
 
-    # def test_btfs_metadata_rm(btfs_handler):
+    # def test_btfs_metadata_rm(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_metadata_rm ' command.
     #     """

@@ -26,7 +26,7 @@ class TestBtfsUpload:
 
     @allure.story("BTFS Bootstrap Tests")
     @allure.title("test_btfs_bootstrap_add")
-    def test_btfs_bootstrap_add(btfs_handler):
+    def test_btfs_bootstrap_add(self, btfs_handler):
         """
         Test the 'test_btfs_bootstrap_add ' command.
         """
@@ -50,7 +50,7 @@ class TestBtfsUpload:
 
     @allure.story("BTFS bootstrap add default Tests")
     @allure.title("test_btfs_bootstrap_add_default")
-    def test_btfs_bootstrap_add_default(btfs_handler):
+    def test_btfs_bootstrap_add_default(self, btfs_handler):
         """
         Test the 'test_btfs_bootstrap_add_default ' command.
         """
@@ -73,7 +73,7 @@ class TestBtfsUpload:
 
     @allure.story("BTFS bootstrap list Test")
     @allure.title("test_btfs_bootstrap_list")
-    def test_btfs_bootstrap_list(btfs_handler):
+    def test_btfs_bootstrap_list(self, btfs_handler):
         """
         Test the 'test_btfs_bootstrap_list ' command.
         """
@@ -94,7 +94,7 @@ class TestBtfsUpload:
         with allure.step("Validate output"):
             assert "/ip4" in stdout
 
-    # def test_btfs_bootstrap_rm(btfs_handler):
+    # def test_btfs_bootstrap_rm(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_bootstrap_rm ' command.
     #     """
@@ -111,7 +111,7 @@ class TestBtfsUpload:
     #     # Assert the command output
     #     assert "removed" in stdout
 
-    # def test_btfs_bootstrap_rm_all(btfs_handler):
+    # def test_btfs_bootstrap_rm_all(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_bootstrap_rm_all ' command.
     #     """

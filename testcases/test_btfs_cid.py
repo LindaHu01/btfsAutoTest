@@ -25,7 +25,7 @@ class TestBtfsCid:
 
     @allure.story("BTFS Cid base32 Test")
     @allure.title("test_btfs_cid_base32")
-    def test_btfs_cid_base32(btfs_handler):
+    def test_btfs_cid_base32(self, btfs_handler):
         """
         Test the 'test_btfs_cid_base32 ' command.
         """
@@ -49,7 +49,7 @@ class TestBtfsCid:
 
     @allure.story("BTFS cid bases Test")
     @allure.title("test_btfs_cid_bases")
-    def test_btfs_cid_bases(btfs_handler):
+    def test_btfs_cid_bases(self, btfs_handler):
         """
         Test the 'test_btfs_cid_bases ' command.
         """
@@ -72,7 +72,7 @@ class TestBtfsCid:
 
     @allure.story("BTFS cid codecs")
     @allure.title("test_btfs_cid_codecs")
-    def test_btfs_cid_codecs(btfs_handler):
+    def test_btfs_cid_codecs(self, btfs_handler):
         """
         Test the 'test_btfs_cid_codecs ' command.
         """
@@ -95,7 +95,7 @@ class TestBtfsCid:
 
     @allure.story("BTFS cid format Test")
     @allure.title("test_btfs_cid_format")
-    def test_btfs_cid_format(btfs_handler):
+    def test_btfs_cid_format(self, btfs_handler):
         """
         Test the 'test_btfs_cid_format ' command.
         """
@@ -119,7 +119,7 @@ class TestBtfsCid:
 
     @allure.story("BTFS hashes Test")
     @allure.title("test_btfs_hashes")
-    def test_btfs_hashes(btfs_handler):
+    def test_btfs_hashes(self, btfs_handler):
         """
         Test the 'test_btfs_hashes ' command.
         """

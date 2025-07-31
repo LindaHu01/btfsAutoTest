@@ -14,15 +14,15 @@ project_root = Path(__file__).parent.parent
 COMMANDS_FILE = project_root / 'data' / 'btfs_backup_commands.yml'
 global access_key
 
-@pytest.fixture(scope="module")
-def btfs_handler():
+@pytest.fixture(scope="class")
+def btfs_handler(self):
     """Fixture to manage BtfsHandler setup and teardown."""
     handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
     handler.connect()
     yield handler
     # handler.disconnect()
 
-# def test_btfs_backup(btfs_handler):
+# def test_btfs_backup(self, btfs_handler):
 #     """
 #     Test the 'test_btfs_backup ' command.
 #     """

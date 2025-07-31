@@ -29,7 +29,7 @@ class TestBtfsUpload:
 
     @allure.story("Standard BTFS Upload")
     @allure.title("Test standard BTFS upload")
-    def test_btfs_upload(btfs_handler):
+    def test_btfs_upload(self, btfs_handler):
         """
         Test the 'test_btfs_upload' command.
         """
@@ -53,7 +53,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy")
     @allure.title("Test BTFS SP upload with copy")
-    def test_btfs_upload_sp(btfs_handler):
+    def test_btfs_upload_sp(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp' command.
         """
@@ -77,7 +77,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy1")
     @allure.title("Test BTFS SP upload with copy1")
-    def test_btfs_upload_sp_copy1(btfs_handler):
+    def test_btfs_upload_sp_copy1(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy1' command.
         """
@@ -101,7 +101,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy3")
     @allure.title("Test BTFS SP upload with copy3")
-    def test_btfs_upload_sp_copy3(btfs_handler):
+    def test_btfs_upload_sp_copy3(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy3' command.
         """
@@ -125,7 +125,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy5")
     @allure.title("Test BTFS SP upload with copy5")
-    def test_btfs_upload_sp_copy5(btfs_handler):
+    def test_btfs_upload_sp_copy5(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy5' command.
         """
@@ -149,7 +149,7 @@ class TestBtfsUpload:
 
     @allure.story("btfs_upload_token_usdd")
     @allure.title("Test BTFS SP upload token usdd")
-    def test_btfs_upload_token_usdd(btfs_handler):
+    def test_btfs_upload_token_usdd(self, btfs_handler):
         """
         Test the 'test_btfs_upload_token_usdd' command.
         """
@@ -173,7 +173,7 @@ class TestBtfsUpload:
 
     @allure.story("btfs_upload_token_usdt")
     @allure.title("Test BTFS SP upload token usdt")
-    def test_btfs_upload_token_usdt(btfs_handler):
+    def test_btfs_upload_token_usdt(self, btfs_handler):
         """
         Test the 'test_btfs_upload_token_usdt' command.
         """

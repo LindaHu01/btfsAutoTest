@@ -28,7 +28,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access Key Generate Tests")
     @allure.title("test_accessKey_generate")
-    def test_accessKey_generate(btfs_handler):
+    def test_accessKey_generate(self, btfs_handler):
         """
         Test the 'test_accessKey_generate ' command.
         """
@@ -49,7 +49,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access key get Test")
     @allure.title("test_accessKey_get")
-    def test_accessKey_get(btfs_handler):
+    def test_accessKey_get(self, btfs_handler):
         """
         Test the 'test_accessKey_get ' command.
         """
@@ -73,7 +73,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access key delete Test")
     @allure.title("test_accessKey_list")
-    def test_accessKey_list(btfs_handler):
+    def test_accessKey_list(self, btfs_handler):
         """
         Test the 'test_accessKey_list ' command.
         """
@@ -96,7 +96,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access key disable Test")
     @allure.title("test_accessKey_disable")
-    def test_accessKey_disable(btfs_handler):
+    def test_accessKey_disable(self, btfs_handler):
         """
         Test the 'test_accessKey_disable ' command.
         """
@@ -115,7 +115,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access key enable Test")
     @allure.title("test_accessKey_enable")
-    def test_accessKey_enable(btfs_handler):
+    def test_accessKey_enable(self, btfs_handler):
         """
         Test the 'test_accessKey_enable ' command.
         """
@@ -134,7 +134,7 @@ class TestBtfsAccessKey:
 
     @allure.story("BTFS Access key reset Test")
     @allure.title("test_accessKey_reset")
-    def test_accessKey_reset(btfs_handler):
+    def test_accessKey_reset(self, btfs_handler):
         """
         Test the 'test_accessKey_disable ' command.
         """
@@ -151,7 +151,7 @@ class TestBtfsAccessKey:
             print("标准输出1:", stdout)
             print("错误输出2:", stderr)
 
-    # def test_accessKey_delete(btfs_handler):
+    # def test_accessKey_delete(self, btfs_handler):
     #     """
     #     Test the 'test_accessKey_disable ' command.
     #     """

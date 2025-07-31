@@ -26,7 +26,7 @@ class TestBtfsFiles:
 
     @allure.story("BTFS Files chcid Test")
     @allure.title("test_btfs_files_chcid")
-    def test_btfs_files_chcid(btfs_handler):
+    def test_btfs_files_chcid(self, btfs_handler):
         """
         Test the 'test_btfs_files_chcid ' command.
         """

@@ -26,7 +26,7 @@ class TestBtfsUpload:
 
     @allure.story("BTFS key Gen")
     @allure.title("test_btfs_key_gen")
-    def test_btfs_key_gen(btfs_handler):
+    def test_btfs_key_gen(self, btfs_handler):
         """
         Test the 'test_btfs_key_gen ' command.
         """
@@ -52,7 +52,7 @@ class TestBtfsUpload:
 
     @allure.story("BTFS key list")
     @allure.title("test_btfs_key_list")
-    def test_btfs_key_list(btfs_handler):
+    def test_btfs_key_list(self, btfs_handler):
         """
         Test the 'test_btfs_key_list ' command.
         """
@@ -73,7 +73,7 @@ class TestBtfsUpload:
             assert "mykey" in stdout
 
 
-    # def test_btfs_key_rename(btfs_handler):
+    # def test_btfs_key_rename(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_key_rename ' command.
     #     """
@@ -90,7 +90,7 @@ class TestBtfsUpload:
     #     # Assert the command output
     #     assert "renamed" in stdout
 
-    # def test_btfs_key_rm(btfs_handler):
+    # def test_btfs_key_rm(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_key_rm ' command.
     #     """

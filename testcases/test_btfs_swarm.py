@@ -29,7 +29,7 @@ class TestBtfsSwarm:
 
     @allure.story("Standard BTFS swarm")
     @allure.title("Test standard BTFS swarm addrs")
-    def test_btfs_swarm_addrs(btfs_handler):
+    def test_btfs_swarm_addrs(self, btfs_handler):
         """
         Test the 'test_btfs_swarm_addrs' command.
         """
@@ -52,7 +52,7 @@ class TestBtfsSwarm:
 
     @allure.story("BTFS swarm test")
     @allure.title("Test BTFS swarm")
-    def test_btfs_swarm_addrs_listen(btfs_handler):
+    def test_btfs_swarm_addrs_listen(self, btfs_handler):
         """
         Test the 'test_btfs_swarm_addrs_listen' command.
         """
@@ -74,7 +74,7 @@ class TestBtfsSwarm:
 
     @allure.story("BTFS swarm addrs local test")
     @allure.title("test_btfs_swarm_addrs_local")
-    def test_btfs_swarm_addrs_local (btfs_handler):
+    def test_btfs_swarm_addrs_local(self, btfs_handler):
         """
         Test the 'test_btfs_swarm_addrs_local' command.
         """
@@ -96,7 +96,7 @@ class TestBtfsSwarm:
 
     @allure.story("BTFS swarm connect test")
     @allure.title("test_btfs_swarm_connect")
-    def test_btfs_swarm_connect (btfs_handler):
+    def test_btfs_swarm_connect(self, btfs_handler):
         """
         Test the 'test_btfs_swarm_connect' command.
         """

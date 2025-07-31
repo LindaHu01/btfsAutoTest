@@ -20,7 +20,7 @@ COMMANDS_FILE = project_root / 'data' / 'btfs_settlement_commands.yml'
 
 @allure.suite("BTFS Settlement Tests")
 class TestBtfsSettlement:
-    @pytest.fixture(scope="module")
+    @pytest.fixture(scope="class")
     def btfs_handler(self):
         """Fixture to manage BtfsHandler setup and teardown."""
         handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
@@ -30,7 +30,7 @@ class TestBtfsSettlement:
 
     @allure.story("BTFS Settlement list Tests")
     @allure.title("test_btfs_settlement_list")
-    def test_btfs_settlement_list(btfs_handler):
+    def test_btfs_settlement_list(self, btfs_handler):
         """
         Test the 'test_btfs_settlement_list' command.
         """

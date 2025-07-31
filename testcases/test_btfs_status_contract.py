@@ -29,7 +29,7 @@ class TestBtfsStatusContract:
 
     @allure.story("BTFS Status daily last report time")
     @allure.title("test_btfs_status_daily_last_report_time")
-    def test_btfs_status_daily_last_report_time(btfs_handler):
+    def test_btfs_status_daily_last_report_time(self, btfs_handler):
         """
         Test the 'test_btfs_status_daily_last_report_time' command.
         """
@@ -49,7 +49,7 @@ class TestBtfsStatusContract:
         with allure.step("Validate output"):
             assert "every_day_seconds" in stdout
 
-    # def test_btfs_status_daily_report_online_server(btfs_handler):
+    # def test_btfs_status_daily_report_online_server(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_status_daily_last_report_time' command.
     #     """
@@ -66,7 +66,7 @@ class TestBtfsStatusContract:
 
     @allure.story("BTFS Status daily daily total")
     @allure.title("test_btfs_status_btfs_daily_total")
-    def test_btfs_status_btfs_daily_total(btfs_handler):
+    def test_btfs_status_btfs_daily_total(self, btfs_handler):
         """
         Test the 'test_btfs_status_btfs_daily_total' command.
         """
@@ -88,7 +88,7 @@ class TestBtfsStatusContract:
 
     @allure.story("BTFS status contract lastinfo")
     @allure.title("test_btfs_status_contract_lastinfo")
-    def test_btfs_status_contract_lastinfo (btfs_handler):
+    def test_btfs_status_contract_lastinfo (self, btfs_handler):
         """
         Test the 'test_btfs_status_contract_lastinfo' command.
         """
@@ -110,7 +110,7 @@ class TestBtfsStatusContract:
 
     @allure.story("BTFS status contract report online server")
     @allure.title("test_btfs_status_contract_report_online_server")
-    def test_btfs_status_contract_report_online_server (btfs_handler):
+    def test_btfs_status_contract_report_online_server(self, btfs_handler):
         """
         Test the 'test_btfs_status_contract_report_online_server' command.
         """

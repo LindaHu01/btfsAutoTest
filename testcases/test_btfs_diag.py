@@ -26,7 +26,7 @@ class TestBtfsDiag:
 
     @allure.story("BTFS Diag cmd")
     @allure.title("test_btfs_diag_cmds")
-    def test_btfs_diag_cmds(btfs_handler):
+    def test_btfs_diag_cmds(self, btfs_handler):
         """
         Test the 'test_btfs_diag_cmds ' command.
         """
@@ -49,7 +49,7 @@ class TestBtfsDiag:
 
     @allure.story("BTFS Diag sys")
     @allure.title("test_btfs_diag_sys")
-    def test_btfs_diag_sys(btfs_handler):
+    def test_btfs_diag_sys(self, btfs_handler):
         """
         Test the 'test_btfs_diag_sys ' command.
         """

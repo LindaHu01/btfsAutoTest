@@ -26,7 +26,7 @@ class TestBtfsGet:
 
     @allure.story("BTFS Get Test")
     @allure.title("test_btfs_get")
-    def test_btfs_get(btfs_handler):
+    def test_btfs_get(self, btfs_handler):
         """
         Test the 'test_btfs_get ' command.
         """

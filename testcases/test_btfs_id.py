@@ -25,7 +25,7 @@ class TestBtfsId:
 
     @allure.story("BTFS id Test")
     @allure.title("test_btfs_id")
-    def test_btfs_id(btfs_handler):
+    def test_btfs_id(self, btfs_handler):
         """
         Test the 'test_btfs_id ' command.
         """

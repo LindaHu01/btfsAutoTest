@@ -25,7 +25,7 @@ class TestBtfsBttc:
         yield handler
         # handler.disconnect()
 
-    # def test_btfs_bttc_btt2wbtt(btfs_handler):
+    # def test_btfs_bttc_btt2wbtt(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_bttc_btt2wbtt ' command.
     #     """
@@ -45,7 +45,7 @@ class TestBtfsBttc:
     #     assert "transaction" in stdout
 
 
-    # def test_btfs_bttc_send_btt_to(btfs_handler):
+    # def test_btfs_bttc_send_btt_to(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_bttc_send_btt_to ' command.
     #     """

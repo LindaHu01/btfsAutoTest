@@ -27,7 +27,7 @@ class TestBtfsCat:
 
     @allure.story("BTFS Cat Test")
     @allure.title("test_btfs_cat")
-    def test_btfs_cat(btfs_handler):
+    def test_btfs_cat(self, btfs_handler):
         """
         Test the 'test_btfs_cat ' command.
         """

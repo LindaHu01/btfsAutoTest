@@ -26,7 +26,7 @@ class TestBtfsAdd:
 
     @allure.story("BTFS Add Tests")
     @allure.title("test_btfs_add")
-    def test_btfs_add(btfs_handler):
+    def test_btfs_add(self, btfs_handler):
         """
         Test the 'btfs add' command.
         """
@@ -49,7 +49,7 @@ class TestBtfsAdd:
 
     @allure.story("BTFS Add r Test")
     @allure.title("test_btfs_add_r")
-    def test_btfs_add_r(btfs_handler):
+    def test_btfs_add_r(self, btfs_handler):
         """
         Test the 'btfs add' command.
         """

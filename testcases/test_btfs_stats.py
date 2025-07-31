@@ -29,7 +29,7 @@ class TestBtfStats:
 
     @allure.story("BTFS Stats bitswap tests")
     @allure.title("test_btfs_stats_bitswap")
-    def test_btfs_stats_bitswap(btfs_handler):
+    def test_btfs_stats_bitswap(self, btfs_handler):
         """
         Test the 'test_btfs_stats_bitswap' command.
         """
@@ -52,7 +52,7 @@ class TestBtfStats:
 
     @allure.story("BTFS stats bw")
     @allure.title("test_btfs_stats_bw")
-    def test_btfs_stats_bw(btfs_handler):
+    def test_btfs_stats_bw(self, btfs_handler):
         """
         Test the 'test_btfs_stats_bw' command.
         """
@@ -75,7 +75,7 @@ class TestBtfStats:
 
     @allure.story("BTFS stats repo")
     @allure.title("test_btfs_stats_repo")
-    def test_btfs_stats_repo(btfs_handler):
+    def test_btfs_stats_repo(self, btfs_handler):
         """
         Test the 'test_btfs_stats_repo' command.
         """

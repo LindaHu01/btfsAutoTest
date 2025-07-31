@@ -19,7 +19,7 @@ COMMANDS_FILE = project_root / 'data' / 'btfs_metadata_commands.yml'
 
 @allure.suite("BTFS Metadata Tests")
 class TestBtfsMetadata:
-    @pytest.fixture(scope="module")
+    @pytest.fixture(scope="class")
     def btfs_handler(self):
         """Fixture to manage BtfsHandler setup and teardown."""
         handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
@@ -29,7 +29,7 @@ class TestBtfsMetadata:
 
     @allure.story("BTFS Metadata add")
     @allure.title("test_btfs_metadata_add")
-    def test_btfs_metadata_add(btfs_handler):
+    def test_btfs_metadata_add(self, btfs_handler):
         """
         Test the 'test_btfs_metadata_add ' command.
         """
@@ -65,7 +65,7 @@ class TestBtfsMetadata:
 
     @allure.story("BTFS metadata rm")
     @allure.title("test_btfs_metadata_rm")
-    def test_btfs_metadata_rm(btfs_handler):
+    def test_btfs_metadata_rm(self, btfs_handler):
         """
         Test the 'test_btfs_metadata_rm ' command.
         """

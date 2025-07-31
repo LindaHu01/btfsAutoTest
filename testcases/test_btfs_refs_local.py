@@ -30,7 +30,7 @@ class TestBtfsRefs:
 
     @allure.story("BTFS Refs Tests")
     @allure.title("test_btfs_refs_local")
-    def test_btfs_refs_local(btfs_handler):
+    def test_btfs_refs_local(self, btfs_handler):
         """
         Test the 'test_btfs_refs_local ' command.
         """

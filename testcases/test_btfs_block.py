@@ -26,7 +26,7 @@ class TestBtfsBlock:
 
     @allure.story("BTFS Block stat Test")
     @allure.title("test_btfs_block_stat")
-    def test_btfs_block_stat(btfs_handler):
+    def test_btfs_block_stat(self, btfs_handler):
         """
         Test the 'test_btfs_block_stat ' command.
         """
@@ -50,7 +50,7 @@ class TestBtfsBlock:
 
     @allure.story("BTFS Block get")
     @allure.title("test_btfs_block_get")
-    def test_btfs_block_get(btfs_handler):
+    def test_btfs_block_get(self, btfs_handler):
         """
         Test the 'test_btfs_block_get ' command.
         """
@@ -75,7 +75,7 @@ class TestBtfsBlock:
 
     @allure.story("BTFS block put Test")
     @allure.title("test_btfs_block_put")
-    def test_btfs_block_put(btfs_handler):
+    def test_btfs_block_put(self, btfs_handler):
         """
         Test the 'test_btfs_block_get ' command.
         """
@@ -97,7 +97,7 @@ class TestBtfsBlock:
         with allure.step("Validate output"):
             assert "Qm" in stdout
 
-    # def test_btfs_block_rm(btfs_handler):
+    # def test_btfs_block_rm(self, btfs_handler):
     #     """
     #     Test the 'test_btfs_block_get ' command.
     #     """
