@@ -20,6 +20,7 @@ COMMANDS_FILE = project_root / 'data' / 'btfs_upload.yml'
 @allure.suite("BTFS Upload Tests")
 class TestBtfsUpload:
     @pytest.fixture(scope="class")
+    @pytest.mark.skip(reason="测试链没有SP")
     def btfs_handler(self):
         """Fixture to manage BtfsHandler setup and teardown."""
         handler = BtfsHandler(HOST, USERNAME, PRIVATE_KEY_PATH, COMMANDS_FILE)
@@ -29,6 +30,7 @@ class TestBtfsUpload:
 
     @allure.story("Standard BTFS Upload")
     @allure.title("Test standard BTFS upload")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload(self, btfs_handler):
         """
         Test the 'test_btfs_upload' command.
@@ -53,6 +55,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy")
     @allure.title("Test BTFS SP upload with copy")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_sp(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp' command.
@@ -77,6 +80,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy1")
     @allure.title("Test BTFS SP upload with copy1")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_sp_copy1(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy1' command.
@@ -101,6 +105,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy3")
     @allure.title("Test BTFS SP upload with copy3")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_sp_copy3(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy3' command.
@@ -125,6 +130,7 @@ class TestBtfsUpload:
 
     @allure.story("SP Upload with Copy5")
     @allure.title("Test BTFS SP upload with copy5")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_sp_copy5(self, btfs_handler):
         """
         Test the 'test_btfs_upload_sp_copy5' command.
@@ -149,6 +155,7 @@ class TestBtfsUpload:
 
     @allure.story("btfs_upload_token_usdd")
     @allure.title("Test BTFS SP upload token usdd")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_token_usdd(self, btfs_handler):
         """
         Test the 'test_btfs_upload_token_usdd' command.
@@ -173,6 +180,7 @@ class TestBtfsUpload:
 
     @allure.story("btfs_upload_token_usdt")
     @allure.title("Test BTFS SP upload token usdt")
+    @pytest.mark.skip(reason="测试链没有SP")
     def test_btfs_upload_token_usdt(self, btfs_handler):
         """
         Test the 'test_btfs_upload_token_usdt' command.

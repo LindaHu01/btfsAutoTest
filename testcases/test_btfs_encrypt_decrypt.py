@@ -104,6 +104,7 @@ class TestBtfsUpload:
     @allure.story("BTFS encrypt to Test")
     @allure.title("test_btfs_encrypt_to")
     @pytest.mark.order(3)
+    @pytest.mark.skip(reason="暂时跳过,需要另起一个服务")
     def test_btfs_encrypt_to(self, btfs_handler):
         global encrypted_cid_to  # 声明使用全局变量
         """
@@ -137,6 +138,7 @@ class TestBtfsUpload:
     @allure.story("BTFS decrypt from Test")
     @allure.title("test_btfs_decrypt_from")
     @pytest.mark.order(4)
+    @pytest.mark.skip(reason="暂时跳过,需要另起一个服务")
     def test_btfs_decrypt_from(self, btfs_handler):
         """
         Test the 'test_btfs_decrypt_from' command.
@@ -174,6 +176,7 @@ class TestBtfsUpload:
     @allure.story("BTFS encrypt p")
     @allure.title("test_btfs_encrypt_p")
     @pytest.mark.order(5)
+    @pytest.mark.skip(reason="暂时跳过,需要另起一个服务")
     def test_btfs_encrypt_p(self, btfs_handler):
         global encrypted_cid_p  # 声明使用全局变量
         """
@@ -207,6 +210,7 @@ class TestBtfsUpload:
     @allure.story("BTFS decrypt p")
     @allure.title("test_btfs_decrypt_p")
     @pytest.mark.order(6)
+    @pytest.mark.skip(reason="暂时跳过,需要另起一个服务")
     def test_btfs_decrypt_p(self, btfs_handler):
         global encrypted_cid_p
         assert encrypted_cid_p is not None, "未获取到加密后的 CID"

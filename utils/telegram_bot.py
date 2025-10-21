@@ -22,3 +22,12 @@ class TelegramBot:
         except requests.exceptions.RequestException as e:
             print(f"Error sending message to Telegram: {str(e)}")
             return None
+
+    def send_document(self, file_path):
+        """发送文件"""
+        url = f"{self.base_url}/sendDocument"
+        with open(file_path, "rb") as file:
+            files = {"document": file}
+            data = {"chat_id": self.chat_id}
+            response = requests.post(url, files=files, data=data)
+        return response.json()

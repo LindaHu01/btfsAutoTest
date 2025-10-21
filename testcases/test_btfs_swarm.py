@@ -96,6 +96,7 @@ class TestBtfsSwarm:
 
     @allure.story("BTFS swarm connect test")
     @allure.title("test_btfs_swarm_connect")
+    @pytest.mark.skip(reason="SP 替代，暂时不执行")
     def test_btfs_swarm_connect(self, btfs_handler):
         """
         Test the 'test_btfs_swarm_connect' command.
